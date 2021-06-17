@@ -74,13 +74,15 @@ public class Roll {
 	/**
 	 * second delivery (difference from 10)
 	 * @param score1
-	 * @return pinsdown
+	 * @return pinsDown
 	 */
 	public int  gameRoll2(int score1) {
 		if( score1 != 10) {
 		Random r = new Random();
+		
 		int pinsDown = r.nextInt((10 - score1) + 1);
 		  //int pinsDown = 0;
+		
 			if(score1 + pinsDown == 10) {
 				System.out.println("r2 = /");
 				setSpare(true);
@@ -101,7 +103,10 @@ public class Roll {
 	}
 	
 	
-	
+	/**
+	 * bonus delivery (score3 & 4) in frame 10
+	 * @return pinsDown
+	 */
 	public int gameRollBonus() {
 		Random r = new Random();
 		int pinsDown = r.nextInt(10 + 1)+0;

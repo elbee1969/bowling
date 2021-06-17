@@ -83,6 +83,11 @@ public class Frame {
 		this.rolls = rolls;
 	}
 
+	/**
+	 * Add bonus when strike or spare
+	 * @param bonusScore
+	 * @return
+	 */
 	public int addBonus(int bonusScore) {
 		return this.bonusFrame + bonusScore;
 	}

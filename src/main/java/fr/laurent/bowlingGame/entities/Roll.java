@@ -34,7 +34,7 @@ public class Roll {
 		return isStrike;
 	}
 
-	public boolean setStrike(boolean isStrike) {
+	public boolean setIsStrike(boolean isStrike) {
 		return this.isStrike = isStrike;
 	}
 
@@ -42,7 +42,7 @@ public class Roll {
 		return isSpare;
 	}
 
-	public boolean setSpare(boolean isSpare) {
+	public boolean setIsSpare(boolean isSpare) {
 		return this.isSpare = isSpare;
 	}
 
@@ -59,7 +59,7 @@ public class Roll {
 		  //int pinsDown =10;
 		  if( pinsDown == 10) {
 				System.out.println("r1 = X");
-				setStrike(true);
+				setIsStrike(true);
 			}else {
 				if(pinsDown == 0)	{
 					System.out.println("r1 = --");
@@ -85,7 +85,7 @@ public class Roll {
 		
 			if(score1 + pinsDown == 10) {
 				System.out.println("r2 = /");
-				setSpare(true);
+				setIsSpare(true);
 			}else {
 				if(pinsDown == 0) {
 					if(score1 == 10) {

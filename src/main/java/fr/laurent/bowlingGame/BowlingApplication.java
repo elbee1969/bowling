@@ -115,16 +115,15 @@ public class BowlingApplication {
 					if(frame.getBonusSpare()) {
 						tempScore += score3;
 					}else {
+						Roll roll4 = new Roll();
+						score4 = roll4.gameRollBonus();
+						roll4.setPinsDown(score4);
+						rolls.add(roll4);
 						if(score3 == 10) {
 							previousFrame.setTempScore(previousFrame.getTempScore() + score1);
-							Roll roll4 = new Roll();
-							score4 = roll4.gameRollBonus();
-							roll4.setPinsDown(score4);
-							rolls.add(roll4);
-
 							tempScore += (score1+score3+score4);
 						}else {
-							tempScore += (score1+score3);
+							tempScore += (score1+score3+score4);
 						}
 						
 					}

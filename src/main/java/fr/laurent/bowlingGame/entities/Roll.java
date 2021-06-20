@@ -60,6 +60,7 @@ public class Roll {
 		  if( pinsDown == 10) {
 				System.out.println("r1 = X");
 				setIsStrike(true);
+				  return pinsDown;
 			}else {
 				if(pinsDown == 0)	{
 					System.out.println("r1 = --");

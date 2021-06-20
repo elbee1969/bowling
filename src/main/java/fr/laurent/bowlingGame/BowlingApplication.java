@@ -65,20 +65,35 @@ public class BowlingApplication {
 
 
 			if (!frames.isEmpty()) {
+				/**
+				 * get the previous frame
+				 */
 				Frame previousFrame = previousFrame(frames,frameNumber);
-				
+				/**
+				 * check if strike or spare before
+				 */
 				if(previousFrame.getBonusSpare() || previousFrame.getBonusStrike()) {
 					
 					if(previousFrame.getBonusSpare()) {
-					
+						/**
+						 * add spare bonus score to the previous frame
+						 */
 						previousFrame.setTempScore(previousFrame.getTempScore() + score1);
 					
 					}else{
-		
+						/**
+						 * add strike bonus score to the previous frame
+						 */
 						previousFrame.setTempScore(previousFrame.getTempScore()  + score1 + score2);
+						
 						if(frameNumber > 2) {
+							/**
+							 * get the -2 frame
+							 */
 							Frame beforePreviousFrame = beforePreviousFrame(frames,frameNumber);
+							
 							if(beforePreviousFrame.getBonusStrike()) {
+								
 								previousFrame.setTempScore(previousFrame.getTempScore() + score1);
 								beforePreviousFrame.setTempScore(beforePreviousFrame.getTempScore() + score1);
 							}
@@ -100,24 +115,22 @@ public class BowlingApplication {
 					if(frame.getBonusSpare()) {
 						tempScore += score3;
 					}else {
+						Roll roll4 = new Roll();
+						score4 = roll4.gameRollBonus();
+						roll4.setPinsDown(score4);
+						rolls.add(roll4);
 						if(score3 == 10) {
 							previousFrame.setTempScore(previousFrame.getTempScore() + score1);
-							Roll roll4 = new Roll();
-							score4 = roll4.gameRollBonus();
-							roll4.setPinsDown(score4);
-							rolls.add(roll4);
-
 							tempScore += (score1+score3+score4);
 						}else {
-							tempScore += (score1+score3);
+							tempScore += (score1+score3+score4);
 						}
 						
 					}
 					
-					
-				}else {
-					
 				}
+				
+				
 			}else {
 
 				tempScore = score1 +score2;
@@ -129,6 +142,10 @@ public class BowlingApplication {
 
 			allFrame -= 1; 
 			
+			
+			/**
+			 * if strike, show only first roll
+			 */
 			if(score1 == 10) {
 				rolls.add(roll1);
 			}else {
@@ -140,6 +157,7 @@ public class BowlingApplication {
 			frame.setRolls(rolls);
 			frames.add(frame);
 			game1.setFrames(frames);
+			
 			System.out.println("------- End frame number : " + frame.getFrameNumber()+ " -------------\n");
 		}
 		
@@ -159,11 +177,21 @@ public class BowlingApplication {
 
 
 	}
-
+	/**
+	 * 
+	 * @param frames
+	 * @param frameNumber
+	 * @return frame -2
+	 */
 	private static Frame beforePreviousFrame(List<Frame> frames, int frameNumber) {
 		return frames.get((frameNumber-3));
 	}
-
+	/**
+	 * 
+	 * @param frames
+	 * @param frameNumber
+	 * @return frame -1
+	 */
 	private static Frame previousFrame(List<Frame> frames, int frameNumber) {
 		return frames.get((frameNumber-2));
 	}

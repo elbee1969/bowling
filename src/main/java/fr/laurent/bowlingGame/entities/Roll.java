@@ -34,7 +34,7 @@ public class Roll {
 		return isStrike;
 	}
 
-	public boolean setStrike(boolean isStrike) {
+	public boolean setIsStrike(boolean isStrike) {
 		return this.isStrike = isStrike;
 	}
 
@@ -42,7 +42,7 @@ public class Roll {
 		return isSpare;
 	}
 
-	public boolean setSpare(boolean isSpare) {
+	public boolean setIsSpare(boolean isSpare) {
 		return this.isSpare = isSpare;
 	}
 
@@ -59,7 +59,8 @@ public class Roll {
 		  //int pinsDown =10;
 		  if( pinsDown == 10) {
 				System.out.println("r1 = X");
-				setStrike(true);
+				setIsStrike(true);
+				  return pinsDown;
 			}else {
 				if(pinsDown == 0)	{
 					System.out.println("r1 = --");
@@ -74,16 +75,18 @@ public class Roll {
 	/**
 	 * second delivery (difference from 10)
 	 * @param score1
-	 * @return pinsdown
+	 * @return pinsDown
 	 */
 	public int  gameRoll2(int score1) {
 		if( score1 != 10) {
 		Random r = new Random();
+		
 		int pinsDown = r.nextInt((10 - score1) + 1);
 		  //int pinsDown = 0;
+		
 			if(score1 + pinsDown == 10) {
 				System.out.println("r2 = /");
-				setSpare(true);
+				setIsSpare(true);
 			}else {
 				if(pinsDown == 0) {
 					if(score1 == 10) {
@@ -101,7 +104,10 @@ public class Roll {
 	}
 	
 	
-	
+	/**
+	 * bonus delivery (score3 & 4) in frame 10
+	 * @return pinsDown
+	 */
 	public int gameRollBonus() {
 		Random r = new Random();
 		int pinsDown = r.nextInt(10 + 1)+0;

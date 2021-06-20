@@ -14,11 +14,11 @@ class RollTest {
 	@Test
 	void testRandom() {
 		// Arrange
+		int range = 10;
 		int i;
 		for(i = 0; i<100; i++) {
 			Random r = new Random();
-			int pinsDown = r.nextInt(10 + 1)+0;
-			//int pinsDown =5;
+			int pinsDown = r.nextInt(range + 1)+0;
 			// Act  
 			boolean ecart = 0 <= pinsDown && pinsDown<= 10;
 			// Assert
